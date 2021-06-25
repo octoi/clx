@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import { auth } from '../firebase/firebase';
+import { collectUserData } from '../firebase/helpers/firebaseUser';
 
 export const StateContext = createContext();
 
@@ -15,6 +16,7 @@ export function Context({ children }) {
 				email: userData.email,
 				profile: userData.photoURL,
 			}
+			collectUserData(user);
 			setUser(user);
 		})
 	}, [])
