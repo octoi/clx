@@ -28,7 +28,9 @@ export function Context({ children }) {
 
 	return (
 		<StateContext.Provider value={{ user, setUser, logout, searchQuery, setSearchQuery }}>
-			{children}
+			<section style={{ margin: "50px 30px" }}>
+				{children}
+			</section>
 		</StateContext.Provider>
 	);
 }

@@ -1,9 +1,15 @@
 import React from 'react';
+import FloatingButton from '../components/home/FloatingButton';
+import Products from '../components/home/Products';
+import { useFetchAllProducts } from '../firebase/helpers/fetchProduct';
 
 export default function Home() {
-	return (
-		<div>
+	const { products, loading } = useFetchAllProducts();
 
-		</div>
+	return (
+		<section style={{ marginTop: "50px" }}>
+			<Products products={products} loading={loading} />
+			<FloatingButton />
+		</section>
 	)
 }
