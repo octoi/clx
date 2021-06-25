@@ -9,6 +9,8 @@ Lest shop online 😎
 
 > CLX is an ecommerce platform where users can sell & buy products
 
+<a href="https://clx-app.netlify.app/">__GET A DEMO HERE__</a>
+
 <B><u>FEATURES 🌟</u></B>
 
 - Sign up with google
