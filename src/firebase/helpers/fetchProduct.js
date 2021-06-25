@@ -22,7 +22,7 @@ export const useFetchAllProducts = () => {
 
 }
 
-export const useFetchOneProduct = (email) => {
+export const useFetchUserProducts = (email) => {
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -39,5 +39,31 @@ export const useFetchOneProduct = (email) => {
 	}, [email]);
 
 	return { products, loading }
+
+}
+
+export const useFetchOneProduct = (id) => {
+	const [product, setProduct] = useState();
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const getData = async () => {
+			const productRef = firestore.collection(collection).doc(id);
+			const doc = await productRef.get();
+
+			if (!doc.exists) {
+				setProduct({ status: false, message: "No such data" })
+			} else {
+				setProduct({ status: true, message: { ...doc.data(), ref: doc.ref } })
+			}
+
+			setLoading(false);
+		}
+
+		getData();
+
+	}, [id]);
+
+	return { product, loading }
 
 }
