@@ -21,3 +21,23 @@ export const useFetchAllProducts = () => {
 	return { products, loading }
 
 }
+
+export const useFetchOneProduct = (email) => {
+	const [products, setProducts] = useState([]);
+	const [loading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const unSubscribe = firestore.collection(collection).where("sellerEmail", "==", email).onSnapshot((snap) => {
+			let productsData = [];
+			snap.forEach(doc => productsData.push({ ...doc.data(), id: doc.id }));
+			setProducts(productsData);
+			setLoading(false)
+		});
+
+
+		return () => unSubscribe();
+	}, [email]);
+
+	return { products, loading }
+
+}
