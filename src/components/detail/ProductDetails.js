@@ -56,7 +56,7 @@ export default function ProductDetails({ product }) {
 						size="lg"
 						as={CustomButton}
 						style={{ background: 'var(--primaryAccentColor)' }}
-						onClick={() => history.push(`/chat/${product?.user.email}`)}
+						onClick={() => history.push(`/chat/${product?.sellerEmail}`)}
 					>Contact Seller</Button>
 				)}
 				<section>
